@@ -1,9 +1,9 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println(sayHi());
+        System.out.println(makeBranch());
     }
 
-    static String sayHi() {
-        return "Hello World";
+    static String makeBranch() {
+        return "branch";
     }
 }
