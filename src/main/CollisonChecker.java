@@ -61,6 +61,7 @@ public class CollisonChecker {
                     entity.collisionON = true;
                 }
 
+
                 break;
 
 
