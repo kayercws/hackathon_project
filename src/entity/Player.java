@@ -53,28 +53,45 @@ public class Player extends Entity{
       }
   }
 
-  public void update() {
-      if(keyH.upPressed == true){
-          direction = "up";
-          worldY -= speed;
-      }
-      else if (keyH.downPressed == true) {
-          direction = "down";
-          worldY += speed;
-      }
-      else if (keyH.leftPressed == true){
-          direction = "left";
-          worldX -= speed;
-      }
-      else if (keyH.rightPressed == true) {
-          direction = "right";
-          worldX += speed;
-      }
-      collisionON = false;
-      gamePanel.collisonChecker.checkTile(this);
-  }
+    public void update() {
+        boolean moving = false;
 
-  public void draw(Graphics2D g2) {
+        if(keyH.upPressed){
+            direction = "up";
+            moving = true;
+        }
+        else if(keyH.downPressed){
+            direction = "down";
+            moving = true;
+        }
+        else if(keyH.leftPressed){
+            direction = "left";
+            moving = true;
+        }
+        else if(keyH.rightPressed){
+            direction = "right";
+            moving = true;
+        }
+
+        if(moving){
+            // CHECK TILE COLLISION
+            collisionON = false;
+            gamePanel.collisonChecker.checkTile(this);
+
+            // MOVE ONLY if no collision
+            if(!collisionON){
+                switch (direction) {
+                    case "up":    worldY -= speed; break;
+                    case "down":  worldY += speed; break;
+                    case "left":  worldX -= speed; break;
+                    case "right": worldX += speed; break;
+                }
+            }
+        }
+    }
+
+
+    public void draw(Graphics2D g2) {
 //      g2.setColor(Color.white);
 //      g2.fillRect(x,y, gamePanel.tileSize, gamePanel.tileSize);
 
