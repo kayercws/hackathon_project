@@ -39,6 +39,7 @@ public class GamePanel extends JPanel implements Runnable {
     public int gameState;
     public final int playState = 1;
     public final int pauseState = 2;
+    public UI ui = new UI(this);
 
 
 
@@ -107,7 +108,6 @@ public class GamePanel extends JPanel implements Runnable {
         if (gameState == pauseState) {
             // nothing
         }
-        player.update();
     }
 
     public void paintComponent(Graphics g) {
@@ -126,6 +126,8 @@ public class GamePanel extends JPanel implements Runnable {
 
         //PLAYER
         player.draw(g2);
+        ui.draw(g2);
+
         g2.dispose();
 
     }

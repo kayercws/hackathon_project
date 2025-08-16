@@ -46,17 +46,34 @@ public class UI {
     }
 
     private void drawPauseScreen() {
-        String text = "PAUSED";
-        int x = getXForCenteredText(text);
-        int y = gp.screenHeight / 2;
+        g2.setColor(new Color(0, 0, 0, 150)); // semi-transparent overlay
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
-        g2.setFont(arial_80B);  // big bold text for pause
+        String text = "PAUSED";
+        g2.setFont(new Font("Kristen ITC", Font.ITALIC, 80));
+        g2.setColor(Color.WHITE);
+
+        // get metrics for the current font
+        int textWidth = g2.getFontMetrics().stringWidth(text);
+        int textHeight = g2.getFontMetrics().getHeight();
+        int ascent = g2.getFontMetrics().getAscent();
+
+        // X = centered horizontally
+        int x = (gp.screenWidth - textWidth) / 2;
+        // Y = centered vertically (baseline corrected)
+        int y = (gp.screenHeight - textHeight) / 2 + ascent;
+
         g2.drawString(text, x, y);
     }
+
+
 
     private int getXForCenteredText(String text) {
         int length = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         return gp.screenWidth / 2 - length / 2;
     }
+
+
+
 }
 
