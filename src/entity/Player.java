@@ -32,11 +32,10 @@ public class Player extends Entity{
   public void getPlayerImage(){
       try{
 
-          front = ImageIO.read(getClass().getResourceAsStream("/kitty/Kitty01 FRONT.png"));
-          back = ImageIO.read(getClass().getResourceAsStream("/kitty/Kitty01 BACK.png"));
-          down = ImageIO.read(getClass().getResourceAsStream("/kitty/Kitty01Down.png"));
-          left = ImageIO.read(getClass().getResourceAsStream("/kitty/Kitty01LEFT.png"));
-          right = ImageIO.read(getClass().getResourceAsStream("/kitty/Kitty01RIGHT.png"));
+          front = ImageIO.read(getClass().getResourceAsStream("/kitty/kitty02FRONT2.png"));
+          back = ImageIO.read(getClass().getResourceAsStream("/kitty/kitty02BACK.png"));
+          left = ImageIO.read(getClass().getResourceAsStream("/kitty/kitty02LEFTy.png"));
+          right = ImageIO.read(getClass().getResourceAsStream("/kitty/Kitty02RIGHT.png"));
 
 
 
@@ -88,7 +87,7 @@ public class Player extends Entity{
       }
       int w = image.getWidth();
       int h = image.getHeight();
-      g2.drawImage(image, x, y, w * 5, h * 5, null); // scales up 3x without stretching
+      g2.drawImage(image, x, y, w*3, h*3, null); // scales up 3x without stretching
 
   }
 }
