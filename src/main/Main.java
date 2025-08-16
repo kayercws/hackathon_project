@@ -20,5 +20,7 @@ public class Main {
         gamePanel.startGameThread();
         gamePanel.requestFocusInWindow();
 
+        gamePanel.setupGame();
+
     }
 }
