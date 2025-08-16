@@ -21,6 +21,7 @@ public class CollisonChecker {
         int entityRigthCol = entityRightWorldX / gamePanel.tileSize;
         int entityTopRow = entityTopWorldY / gamePanel.tileSize;
         int entityBottomRow = entityBottomWorldY / gamePanel.tileSize;
+        String hi = "hi";
 
         int tileNum1, tileNum2;
 
