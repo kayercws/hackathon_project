@@ -53,6 +53,7 @@ public class TileManager {
                     int num = Integer.parseInt(numbers[col]);
                     mapTileNum[col][row] = num;
                     col++;
+
                 }
                 if(col == gp.maxScreenCol) {
                     col = 0;
