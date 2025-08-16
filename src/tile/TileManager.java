@@ -53,6 +53,7 @@ public class TileManager {
             tile[7] = new Tile();
             tile[7].image = ImageIO.read(getClass().getResourceAsStream("/npc/NPC-kitty01.png"));
             tile[7].collision = true;
+            // slay
 
 
         } catch(IOException e) {
