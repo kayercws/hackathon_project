@@ -28,18 +28,26 @@ public class GamePanel extends JPanel implements Runnable {
     int FPS = 60;
 
     TileManager tileM = new TileManager(this);
-    KeyHandler keyH = new KeyHandler();
+    KeyHandler keyH = new KeyHandler(this);
     public CollisonChecker collisonChecker = new CollisonChecker(this);
     Thread gameThread;
     public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this, keyH);
     public SuperObject obj[] = new SuperObject[10];
 
+    // game state
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 2;
+
+
 
     // player's default position
     int playerX = 100;
     int playerY = 100;
     int playerSpeed = 4;
+
+
 
     public GamePanel(){
 
@@ -52,6 +60,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void setupGame() {
         aSetter.setObject();
+        gameState = playState;
     }
 
     public void startGameThread(){
@@ -91,6 +100,13 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
+
+        if(gameState == playState) {
+            player.update();
+        }
+        if (gameState == pauseState) {
+            // nothing
+        }
         player.update();
     }
 
