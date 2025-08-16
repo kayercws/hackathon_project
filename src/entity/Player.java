@@ -1,6 +1,7 @@
 package entity;
 
 
+import main.CollisonChecker;
 import main.GamePanel;
 import main.KeyHandler;
 
@@ -25,6 +26,7 @@ public class Player extends Entity{
 
       setDefaultValues();
       getPlayerImage();
+      solidArea = new Rectangle(8, 16, 32, 32);
   }
 
   public void setDefaultValues() {
@@ -68,6 +70,8 @@ public class Player extends Entity{
           direction = "right";
           worldX += speed;
       }
+      collisionON = false;
+      gamePanel.collisonChecker.checkTile(this);
   }
 
   public void draw(Graphics2D g2) {
