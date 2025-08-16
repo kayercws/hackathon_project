@@ -13,6 +13,8 @@ public class GamePanel extends JPanel implements Runnable {
     final int originalTileSize = 16;
     final int scale = 3;
 
+    // GAME state
+
     public final int tileSize = originalTileSize * scale; //48x48 tile
     public final int maxScreenCol = 16;
     public final int maxScreenRow = 12;
@@ -37,6 +39,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     // game state
     public int gameState;
+    public final int titleState = 0;
     public final int playState = 1;
     public final int pauseState = 2;
     public UI ui = new UI(this);
@@ -114,19 +117,21 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
-        //TILE
-        tileM.draw(g2);
+        // TITLE SCREEN
+        if(gameState == titleState) {
 
-        //OBJECT
-        for(int i = 0; i < obj.length; i++) {
-            if(obj[i] != null) {
-                obj[i].draw(g2, this);
+        } else {
+            for(int i = 0; i < obj.length; i++) {
+                if(obj[i] != null) {
+                    obj[i].draw(g2, this);
+                }
             }
-        }
 
-        //PLAYER
-        player.draw(g2);
-        ui.draw(g2);
+            //PLAYER
+            player.draw(g2);
+            ui.draw(g2);
+
+        }
 
         g2.dispose();
 
