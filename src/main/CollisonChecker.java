@@ -73,6 +73,7 @@ public class CollisonChecker {
                 if (gamePanel.tileM.tile[tileNum1].collision == true ||
                         gamePanel.tileM.tile[tileNum2].collision == true) {
                     entity.collisionON = true;
+
                 }
 
                 break;
