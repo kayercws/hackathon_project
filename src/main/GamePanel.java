@@ -1,5 +1,7 @@
 package main;
 
+import entity.NPC_kitty;
+import entity.NPC_lake_kitty;
 import entity.Player;
 import object.SuperObject;
 import tile.TileManager;
@@ -41,6 +43,8 @@ public class GamePanel extends JPanel implements Runnable {
     Thread gameThread;
     public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this, keyH);
+    public NPC_kitty npcKitty = new NPC_kitty(this);
+    public NPC_lake_kitty npcLakeKitty = new NPC_lake_kitty(this);
     public SuperObject obj[] = new SuperObject[10];
 
     // game state
@@ -85,6 +89,14 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame() {
         aSetter.setObject();
         gameState = titleState;
+        npcKitty = new NPC_kitty(this);
+        npcKitty.worldX = player.worldX + tileSize * 1; // right next to player
+        npcKitty.worldY = player.worldY - tileSize * 2;
+
+        npcLakeKitty.worldX = player.worldX + tileSize * 1; // right next to player
+        npcLakeKitty.worldY = player.worldY - tileSize * 13;
+
+
     }
 
     public void startGameThread(){
@@ -137,6 +149,13 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
+        tileM.draw(g2); // draw tiles first
+        player.draw(g2); // then player (on top)
+        npcKitty.draw(g2, player);// then NPC
+        npcLakeKitty.draw(g2, player);
+        ui.draw(g2);             // then UI
+
+
 
         // TITLE SCREEN
         if(gameState == titleState) {
@@ -154,6 +173,11 @@ public class GamePanel extends JPanel implements Runnable {
             //PLAYER
             player.draw(g2);
             ui.draw(g2);
+
+            //NPC_KITTY
+            npcKitty.draw(g2, player);
+
+            npcLakeKitty.draw(g2,player);
 
         }
 

@@ -50,6 +50,9 @@ public class TileManager {
             tile[6] = new Tile();
             tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass03.png"));
 
+            tile[7] = new Tile();
+            tile[7].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass03.png"));
+
         } catch(IOException e) {
             e.printStackTrace();
         }
@@ -78,7 +81,6 @@ public class TileManager {
             }
             br.close();
         } catch(Exception e) {
-
         }
     }
 

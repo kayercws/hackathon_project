@@ -17,17 +17,21 @@ public class Player extends Entity{
     KeyHandler keyH;
     public final int screenX;
     public final int screenY;
+    int standCounter = 0;
 
     public Player(GamePanel gamePanel, KeyHandler keyH) {
+        super(gamePanel);
         this.gamePanel = gamePanel;
         this.keyH = keyH;
 
         screenX = gamePanel.screenWidth/2;
         screenY = gamePanel.screenHeight/2;
+        solidArea = new Rectangle(8, 16, 32, 32);
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefualtY = solidArea.y;
 
         setDefaultValues();
         getPlayerImage();
-        solidArea = new Rectangle(8, 16, 32, 32);
     }
 
     public void setDefaultValues() {
