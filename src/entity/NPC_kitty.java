@@ -47,7 +47,7 @@ public class NPC_kitty extends Entity{
         // Draw dialogue if player is nearby
         if(Math.abs(player.worldX - worldX) < gp.tileSize*1.5 &&
                 Math.abs(player.worldY - worldY) < gp.tileSize*1.5){
-            g2.setFont(new Font("Serif", Font.PLAIN, 24));
+            g2.setFont(new Font("Serif", Font.PLAIN, 18));
             g2.setColor(Color.WHITE);
             g2.drawString(dialogue, screenX, screenY - 10);
         }
