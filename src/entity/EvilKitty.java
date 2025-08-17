@@ -4,13 +4,12 @@ import main.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class NPC_lake_kitty extends Entity{
-    public String dialogue = "Meow! welcome to the lake :3 ";
+public class EvilKitty extends Entity{
+    public String dialogue = "im evil kittyuh";
 
-    public NPC_lake_kitty(GamePanel gp) {
+    public EvilKitty(GamePanel gp) {
 
         super(gp);
 
@@ -20,10 +19,10 @@ public class NPC_lake_kitty extends Entity{
     public void getNPCImage(){
         try{
 
-            front = ImageIO.read(getClass().getResourceAsStream("/npc/NPC-kitty02.png"));
-            back = ImageIO.read(getClass().getResourceAsStream("/npc/NPC-kitty02.png"));
-            left = ImageIO.read(getClass().getResourceAsStream("/npc/NPC-kitty02.png"));
-            right = ImageIO.read(getClass().getResourceAsStream("/npc/NPC-kitty02.png"));
+            front = ImageIO.read(getClass().getResourceAsStream("/monster/Monster.png"));
+            back = ImageIO.read(getClass().getResourceAsStream("/monster/Monster.png"));
+            left = ImageIO.read(getClass().getResourceAsStream("/monster/Monster.png"));
+            right = ImageIO.read(getClass().getResourceAsStream("/monster/Monster.png"));
 
 
 

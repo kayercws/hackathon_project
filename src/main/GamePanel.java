@@ -3,6 +3,7 @@ package main;
 import entity.NPC_kitty;
 import entity.NPC_lake_kitty;
 import entity.Player;
+import entity.EvilKitty;
 import object.SuperObject;
 import tile.TileManager;
 import javax.imageio.ImageIO;
@@ -45,6 +46,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(this, keyH);
     public NPC_kitty npcKitty = new NPC_kitty(this);
     public NPC_lake_kitty npcLakeKitty = new NPC_lake_kitty(this);
+    public EvilKitty evilKitty = new EvilKitty(this);
     public SuperObject obj[] = new SuperObject[10];
 
     // game state
@@ -95,6 +97,11 @@ public class GamePanel extends JPanel implements Runnable {
 
         npcLakeKitty.worldX = player.worldX + tileSize * 1; // right next to player
         npcLakeKitty.worldY = player.worldY - tileSize * 13;
+
+        evilKitty.worldX = player.worldX + tileSize * - 10;
+        evilKitty.worldY = player.worldY + tileSize * + 1;
+
+
 
 
     }
@@ -152,8 +159,9 @@ public class GamePanel extends JPanel implements Runnable {
         tileM.draw(g2); // draw tiles first
         player.draw(g2); // then player (on top)
         npcKitty.draw(g2, player);// then NPC
+        evilKitty.draw(g2,player);
         npcLakeKitty.draw(g2, player);
-        ui.draw(g2);             // then UI
+        ui.draw(g2);// then UI
 
 
 
@@ -178,6 +186,8 @@ public class GamePanel extends JPanel implements Runnable {
             npcKitty.draw(g2, player);
 
             npcLakeKitty.draw(g2,player);
+
+            evilKitty.draw(g2,player);
 
         }
 
