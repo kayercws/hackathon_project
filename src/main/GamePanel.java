@@ -3,6 +3,10 @@ package main;
 import entity.Player;
 import object.SuperObject;
 import tile.TileManager;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +24,8 @@ public class GamePanel extends JPanel implements Runnable {
     public final int maxScreenRow = 12;
     public final int screenWidth = tileSize * maxScreenCol; // 786 pixels
     public final int screenHeight = tileSize * maxScreenRow; // 576 pixels
+
+    public BufferedImage Kitty02FRONT;
 
     // world settings
     public final int maxWorldCol = 50;
@@ -60,11 +66,25 @@ public class GamePanel extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
+        loadTitleAssets();
+    }
+
+    private void loadTitleAssets() {
+        try {
+            // make sure the file exists at src/main/resources/kitty/Kitty02FRONT.png
+            Kitty02FRONT = ImageIO.read(
+                    getClass().getResourceAsStream("/kitty/Kitty02FRONT.png")
+            );
+            // quick sanity check (remove later):
+            // System.out.println(getClass().getResource("/kitty/Kitty02FRONT.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setupGame() {
         aSetter.setObject();
-        gameState = playState;
+        gameState = titleState;
     }
 
     public void startGameThread(){
@@ -117,12 +137,14 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
-        tileM.draw(g2);
 
         // TITLE SCREEN
         if(gameState == titleState) {
+            ui.draw(g2);
 
         } else {
+            tileM.draw(g2);
+
             for(int i = 0; i < obj.length; i++) {
                 if(obj[i] != null) {
                     obj[i].draw(g2, this);
